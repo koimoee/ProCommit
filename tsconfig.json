@@ -14,8 +14,8 @@
 			"@utils/*": [
 				"utils/*"
 			],
-			"@gptcommit/*": [
-				"gptcommit/*"
+			"@procommit/*": [
+				"procommit/*"
 			],
 			"@commands": [
 				"commands"
