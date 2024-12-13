@@ -1,46 +1,47 @@
-name: Build VSIX Extension
+name: Build and Package Extension
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
-  build:
+  build-and-package:
     runs-on: windows-latest
 
     steps:
-      # Step 1: Check out the code
-      - name: Checkout the code
-        uses: actions/checkout@v2
+      # Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js
-      - name: Set up Node.js
+      # Set up Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
-      # Step 3: Cache Node.js modules
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: npm-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            npm-cache-${{ runner.os }}-
-
-      # Step 4: Install dependencies
-      - name: Install dependencies
+      # Install dependencies
+      - name: Install Dependencies
         run: yarn install
 
-      # Step 5: Compile the extension
-      - name: Compile the extension
+      # Build the extension
+      - name: Build Extension
         run: yarn run build
 
-      # Step 6: Package the VSIX
-      - name: Package the VSIX
-        run: yarn run package
+      # Package the extension as a .vsix file
+      - name: Package Extension
+        run: yarn run package-vsix
 
-      # Step 7: Upload the built VSIX file as an artifact
-      - name: Upload VSIX artifact
+      # Verify the .vsix file exists
+      - name: Verify .vsix File
+        run: |
+          if not exist *.vsix (
+            echo "Error: No .vsix file was found!" && exit 1
+          )
+
+      # Upload the .vsix file as an artifact
+      - name: Upload VSIX Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ProCommit.vsix
