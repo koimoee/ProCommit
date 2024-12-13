@@ -1,13 +1,13 @@
 {
-  "name": "gpt-commit",
-  "displayName": "GPT Commit",
-  "description": "VS Code extension which helps to generate AI commit messages using ChatGPT",
+  "name": "pro-commit",
+  "displayName": "ProCommit",
+  "description": "VS Code extension which helps to generate AI commit messages using ChatGPT & Custom Endpoint.",
   "version": "1.0.5",
-  "homepage": "https://github.com/dmytrobaida/GPTCommitVSCode#readme",
-  "bugs": "https://github.com/dmytrobaida/GPTCommitVSCode/issues",
+  "homepage": "https://github.com/koimoee/ProCommit#readme",
+  "bugs": "https://github.com/koimoee/ProCommit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dmytrobaida/GPTCommitVSCode"
+    "url": "https://github.com/koimoee/ProCommit"
   },
   "license": "MIT",
   "engines": {
@@ -32,7 +32,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "gptcommit.generateAICommit",
+        "command": "procommit.generateAICommit",
         "title": "Generate AI commit",
         "icon": {
           "dark": "assets/icons/commit-dark.svg",
@@ -40,36 +40,33 @@
         }
       },
       {
-        "command": "gptcommit.setOpenAIApiKey",
-        "title": "Set OpenAI API key"
+        "command": "procommit.setOpenAIApiKey",
+        "title": "Set API key"
       }
     ],
     "menus": {
       "scm/title": [
         {
-          "command": "gptcommit.generateAICommit",
+          "command": "procommit.generateAICommit",
           "when": "scmProvider == git",
           "group": "navigation"
         }
       ]
     },
     "configuration": {
-      "title": "GPT Commit",
+      "title": "ProCommit",
       "properties": {
-        "gptcommit.appearance.delimeter": {
+        "procommit.appearance.delimeter": {
           "type": "string",
           "default": "*",
           "description": "Delimeter between commit lines"
         },
-        "gptcommit.general.generator": {
+        "procommit.general.generator": {
           "type": "string",
-          "enum": [
-            "ChatGPT"
-          ],
           "default": "ChatGPT",
           "description": "Generator used to create commit messages"
         },
-        "gptcommit.general.messageApproveMethod": {
+        "procommit.general.messageApproveMethod": {
           "type": "string",
           "enum": [
             "Quick pick",
@@ -78,37 +75,27 @@
           "default": "Quick pick",
           "description": "Method used to approve generated commit messages"
         },
-        "gptcommit.openAI.apiKey": {
+        "procommit.openAI.apiKey": {
           "type": "string",
           "default": "",
           "description": "Needed for generating AI commit messages"
         },
-        "gptcommit.openAI.gptVersion": {
+        "procommit.openAI.gptVersion": {
           "type": "string",
-          "enum": [
-            "gpt-4",
-            "gpt-4-0613",
-            "gpt-4-32k",
-            "gpt-4-32k-0613",
-            "gpt-3.5-turbo",
-            "gpt-3.5-turbo-0613",
-            "gpt-3.5-turbo-16k",
-            "gpt-3.5-turbo-16k-0613"
-          ],
           "default": "gpt-3.5-turbo-16k",
-          "description": "Version of GPT used by OpenAI"
+          "description": "Version of GPT used"
         },
-        "gptcommit.openAI.customEndpoint": {
+        "procommit.openAI.customEndpoint": {
           "type": "string",
           "default": "",
-          "description": "Custom endpoint URL for OpenAI API"
+          "description": "Custom endpoint URL"
         },
-        "gptcommit.openAI.temperature": {
+        "procommit.openAI.temperature": {
           "type": "number",
           "default": 0.2,
           "description": "Controls randomness. Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive"
         },
-        "gptcommit.openAI.maxTokens": {
+        "procommit.openAI.maxTokens": {
           "type": "number",
           "default": 196,
           "description": "The maximum number of tokens to generate. Requests can use up to 2048 tokens shared between prompt and completion"
