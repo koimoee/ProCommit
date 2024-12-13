@@ -1,6 +1,6 @@
-# GPT Commit
+# ProCommit
 
-VS Code extension which helps to generate AI commit messages using ChatGPT.
+VS Code extension which helps to generate AI commit messages using ChatGPT & Custom Endpoint.
 
 ## Features
 
@@ -36,37 +36,6 @@ GPT Commit extension contributes the following settings:
 - `procommit.openAI.temperature`: Controls randomness. Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive
 - `procommit.openAI.maxTokens`: The maximum number of tokens to generate. Requests can use up to 2048 tokens shared between prompt and completion
 
-## Release Notes
-
-### 1.0.0
-
-Initial release of GPT Commit
-
-### 1.0.1
-
-Updated icons
-
-### 1.0.2
-
-Fixed UX
-
-### 1.0.3
-
-Added Open AI API Key input prompt
-
-### 1.0.4
-
-Updated commit formatting. Added new setting
-
-### 1.0.5
-
-Added new advanced configuration for ChatGPT.\
-Added new option to accept and edit generated commit via temp message file. (Thanks for help [chenweiyi](https://github.com/chenweiyi))\
-Added option to set custom ChatGPT endpoint URL. (Thanks for help [aiyogg](https://github.com/aiyogg))\
-Fixed issue with git on windows (Issue [#5](https://github.com/dmytrobaida/GPTCommitVSCode/issues/5))\
-Added option to select different ChatGPT version (Issue [#6](https://github.com/dmytrobaida/GPTCommitVSCode/issues/6))\
-Set default ChatGPT version to gpt-3.5-turbo-16k
-
 ## License
 
-Released under [MIT](/LICENSE) by [@dmytrobaida](https://github.com/dmytrobaida).
+Released under [MIT](/LICENSE) by [@prplmoe](https://github.com/koimoee).
