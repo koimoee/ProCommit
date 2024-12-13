@@ -109,6 +109,7 @@
     "build": "npm run esbuild-base -- --sourcemap",
     "watch": "npm run esbuild-base -- --sourcemap --watch",
     "lint": "eslint src --ext ts",
+    "package-vsix": "vsce package",
     "package": "vsce package -o packages",
     "package:publish": "vsce publish"
   },
