@@ -23,25 +23,25 @@ jobs:
         uses: actions/cache@v3
         with:
           path: node_modules
-          key: npm-cache-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          key: npm-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             npm-cache-${{ runner.os }}-
 
       # Step 4: Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: yarn install
 
-      # Step 6: Compile the extension
+      # Step 5: Compile the extension
       - name: Compile the extension
-        run: npm run build
+        run: yarn run build
 
-      # Step 7: Package the VSIX
+      # Step 6: Package the VSIX
       - name: Package the VSIX
-        run: npm run package
+        run: yarn run package -- -o packages
 
-      # Step 8: Upload the built VSIX file as an artifact
+      # Step 7: Upload the built VSIX file as an artifact
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
           name: ProCommit.vsix
-          path: procommit-*.vsix
+          path: packages/*.vsix
