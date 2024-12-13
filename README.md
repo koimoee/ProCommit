@@ -13,11 +13,12 @@ You can generate commit message by pressing 'Generate AI commit' button in sourc
 ## Requirements
 
 You need Open AI API Key to make this extension work.
-You can get your API key from [OpenAI](https://platform.openai.com/account/api-keys).
+- [OpenAI](https://platform.openai.com/account/api-keys).
+- Or You can use your own api key.
 
 ## Extension Settings
 
-GPT Commit extension contributes the following settings:
+Pro Commit extension contributes the following settings:
 
 ### Appearance
 
@@ -30,9 +31,9 @@ GPT Commit extension contributes the following settings:
 
 ### OpenAI
 
-- `procommit.openAI.apiKey`: OpenAI API Key. Needed for generating AI commit messages
-- `procommit.openAI.gptVersion`: Version of GPT used by OpenAI
-- `procommit.openAI.customEndpoint`: Custom endpoint URL for OpenAI API
+- `procommit.openAI.apiKey`: API Key. Needed for generating AI commit messages
+- `procommit.openAI.gptVersion`: Version of GPT used
+- `procommit.openAI.customEndpoint`: Custom endpoint URL
 - `procommit.openAI.temperature`: Controls randomness. Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive
 - `procommit.openAI.maxTokens`: The maximum number of tokens to generate. Requests can use up to 2048 tokens shared between prompt and completion
 
