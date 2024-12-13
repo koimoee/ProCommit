@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 
-import { GitExtension } from "@gptcommit/scm/types";
+import { GitExtension } from "@procommit/scm/types";
 
 export function getRepositoryFromGitExtension(
   gitExtension: vscode.Extension<GitExtension>
