@@ -37,11 +37,11 @@ jobs:
 
       # Step 6: Package the VSIX
       - name: Package the VSIX
-        run: yarn run package -- -o packages
+        run: yarn run package
 
       # Step 7: Upload the built VSIX file as an artifact
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
           name: ProCommit.vsix
-          path: packages/*.vsix
+          path: *.vsix
