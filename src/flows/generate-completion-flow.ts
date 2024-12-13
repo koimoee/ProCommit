@@ -1,6 +1,6 @@
-import { MsgGenerator } from "@gptcommit/commit-msg-gen/generators/msg-generator";
-import { DiffProvider } from "@gptcommit/scm/diff-providers/diff-provider";
-import { CommitMessageWriter } from "@gptcommit/scm/commit-message-writers/commit-message-writer";
+import { MsgGenerator } from "@procommit/commit-msg-gen/generators/msg-generator";
+import { DiffProvider } from "@procommit/scm/diff-providers/diff-provider";
+import { CommitMessageWriter } from "@procommit/scm/commit-message-writers/commit-message-writer";
 
 import { Flow } from "./flow";
 

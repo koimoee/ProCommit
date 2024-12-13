@@ -4,17 +4,17 @@ import { tmpdir } from "os";
 import * as path from "path";
 
 import { getConfiguration } from "@utils/configuration";
-import { GitExtension } from "@gptcommit/scm/types";
-import { GitCommitMessageWriter, VscodeGitDiffProvider } from "@gptcommit/scm";
+import { GitExtension } from "@procommit/scm/types";
+import { GitCommitMessageWriter, VscodeGitDiffProvider } from "@procommit/scm";
 import { GenerateCompletionFlow } from "@flows";
-import { ChatgptMsgGenerator } from "@gptcommit/commit-msg-gen";
+import { ChatgptMsgGenerator } from "@procommit/commit-msg-gen";
 import { runTaskWithTimeout } from "@utils/timer";
 import { logToOutputChannel } from "@utils/output";
 import { isValidApiKey } from "@utils/text";
 
 async function openTempFileWithMessage(message: string) {
   const uid = randomUUID();
-  const tempMessageFile = path.join(tmpdir(), `vscode-gptcommit-${uid}.txt`);
+  const tempMessageFile = path.join(tmpdir(), `vscode-procommit-${uid}.txt`);
 
   logToOutputChannel(`Opening temp file: ${tempMessageFile}`);
 
@@ -94,7 +94,7 @@ export async function generateAiCommitCommand() {
 
     if (!isValidApiKey()) {
       logToOutputChannel("OpenAI API Key is not set. Asking user to set it.");
-      await vscode.commands.executeCommand("gptcommit.setOpenAIApiKey");
+      await vscode.commands.executeCommand("procommit.setOpenAIApiKey");
     }
 
     if (!isValidApiKey()) {
