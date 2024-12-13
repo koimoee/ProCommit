@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 
-import { GitExtension, Repository } from "@gptcommit/scm/types";
+import { GitExtension, Repository } from "@procommit/scm/types";
 import { getRepositoryFromGitExtension } from "@utils/repository";
 
 import { CommitMessageWriter } from "./commit-message-writer";
