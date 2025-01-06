@@ -4,9 +4,6 @@ import * as vscode from "vscode";
 import { DeepKey } from "./types";
 
 const configurationSchema = z.object({
-  appearance: z.object({
-    delimeter: z.string().optional(),
-  }),
   general: z.object({
     generator: z
       .enum(["ChatGPT"])
@@ -17,6 +14,11 @@ const configurationSchema = z.object({
       .enum(["Quick pick", "Message file"])
       .default("Quick pick")
       .catch("Quick pick")
+      .optional(),
+    language: z
+      .enum(["English", "Japanese"])
+      .default("English")
+      .catch("English")
       .optional(),
   }),
   openAI: z.object({
