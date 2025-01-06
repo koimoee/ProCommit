@@ -47,6 +47,21 @@ jobs:
           name: ProCommit.vsix
           path: '*.vsix'
 
+      # Publish to Open VSX Registry
+      - name: Publish to Open VSX Registry
+        uses: HaaLeo/publish-vscode-extension@v1
+        id: publishToOpenVSX
+        with:
+          pat: ${{ secrets.OPEN_VSX_TOKEN }}
+
+      # Publish to Visual Studio Marketplace
+      - name: Publish to Visual Studio Marketplace
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          registryUrl: https://marketplace.visualstudio.com
+          extensionFile: ${{ steps.publishToOpenVSX.outputs.vsixPath }}
+
       # Generate release notes using Release Changelog Builder
       - name: Generate Release Notes
         id: generate_release_notes
