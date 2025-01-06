@@ -1,64 +1,27 @@
 import {
   ChatCompletionRequestMessage,
-  ChatCompletionRequestMessageRoleEnum,
   Configuration,
   OpenAIApi,
 } from "openai";
 
 import { trimNewLines } from "@utils/text";
-import { getLanguage, Configuration as AppConfiguration } from "@utils/configuration";
+import { Configuration as AppConfiguration } from "@utils/configuration";
+import { getSystemInstruction } from "@utils/customInstruction";
 
 import { MsgGenerator } from "./msg-generator";
-
-const language = getLanguage();
-
-const initMessagesPrompt: Array<ChatCompletionRequestMessage> = [
-  {
-    role: ChatCompletionRequestMessageRoleEnum.System,
-    content: `You are to act as the author of a commit message in git. Your mission is to create clean and comprehensive commit messages in the conventional commit convention. I'll send you an output of 'git diff --staged' command, and you convert it into a single commit message. Do not preface the commit with anything, use the present tense. Don't add any descriptions to the commit, only commit message. Use ${language} language to answer. Ensure the commit message is concise and follows the format: <type>(<scope>): <subject>. The available types are: feat, fix, docs, style, refactor, perf, test, chore, build, ci, revert. The scope should be the filename or a relevant module and filename should without folder and folder trailing slash. Generate a single commit message that summarizes all changes.`,
-  },
-  {
-    role: ChatCompletionRequestMessageRoleEnum.User,
-    content: `diff --git a/src/server.ts b/src/server.ts
-    index ad4db42..f3b18a9 100644
-    --- a/src/server.ts
-    +++ b/src/server.ts
-    @@ -10,7 +10,7 @@ import {
-      initWinstonLogger();
-      
-      const app = express();
-    -const port = 7799;
-    +const PORT = 7799;
-      
-      app.use(express.json());
-      
-    @@ -34,6 +34,6 @@ app.use((_, res, next) => {
-      // ROUTES
-      app.use(PROTECTED_ROUTER_URL, protectedRouter);
-      
-    -app.listen(port, () => {
-    -  console.log(\`Server listening on port \${port}\`);
-    +app.listen(process.env.PORT || PORT, () => {
-    +  console.log(\`Server listening on port \${PORT}\`);
-      });`,
-  },
-  {
-    role: ChatCompletionRequestMessageRoleEnum.Assistant,
-    content: `fix(server.ts): change port variable case from lowercase port to uppercase PORT`,
-  },
-];
 
 function generateCommitMessageChatCompletionPrompt(
   diff: string
 ): Array<ChatCompletionRequestMessage> {
-  const chatContextAsCompletionRequest = [...initMessagesPrompt];
+  const initMessagesPrompt: Array<ChatCompletionRequestMessage> = [
+    getSystemInstruction(),
+    {
+      role: "user",
+      content: diff,
+    },
+  ];
 
-  chatContextAsCompletionRequest.push({
-    role: ChatCompletionRequestMessageRoleEnum.User,
-    content: diff,
-  });
-
-  return chatContextAsCompletionRequest;
+  return initMessagesPrompt;
 }
 
 const defaultModel = "gpt-3.5-turbo-16k";
@@ -92,7 +55,7 @@ export class ChatgptMsgGenerator implements MsgGenerator {
     const commitMessage = message?.content;
 
     if (!commitMessage) {
-      throw new Error("No commit message were generated. Try again.");
+      throw new Error("No commit message was generated. Try again.");
     }
 
     const alignedCommitMessage = trimNewLines(commitMessage);
