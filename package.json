@@ -94,6 +94,19 @@
           "type": "number",
           "default": 196,
           "description": "The maximum number of tokens to generate. Requests can use up to 2048 tokens shared between prompt and completion"
+        },
+        "procommit.general.language": {
+          "type": "string",
+          "enum": [
+            "English",
+            "Japanese",
+            "Spanish",
+            "French",
+            "German",
+            "Chinese"
+          ],
+          "default": "English",
+          "description": "Language used for commit messages"
         }
       }
     }
