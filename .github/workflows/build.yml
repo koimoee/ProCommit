@@ -36,9 +36,10 @@ jobs:
       # Verify the .vsix file exists
       - name: Verify .vsix File
         run: |
-          if not exist *.vsix (
-            echo "Error: No .vsix file was found!" && exit 1
-          )
+          if (!(Test-Path *.vsix)) {
+            Write-Error "Error: No .vsix file was found!" 
+            exit 1
+          }
 
       # Upload the .vsix file as an artifact
       - name: Upload VSIX Artifact
