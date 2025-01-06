@@ -1,12 +1,13 @@
 import {
   ChatCompletionRequestMessage,
+  ChatCompletionRequestMessageRoleEnum,
   Configuration,
   OpenAIApi,
 } from "openai";
 
 import { trimNewLines } from "@utils/text";
 import { Configuration as AppConfiguration } from "@utils/configuration";
-import { getSystemInstruction } from "@utils/customInstruction";
+import { getSystemInstruction, getAssistantInstruction } from "@utils/customInstruction";
 
 import { MsgGenerator } from "./msg-generator";
 
@@ -16,9 +17,10 @@ function generateCommitMessageChatCompletionPrompt(
   const initMessagesPrompt: Array<ChatCompletionRequestMessage> = [
     getSystemInstruction(),
     {
-      role: "user",
+      role: ChatCompletionRequestMessageRoleEnum.User,
       content: diff,
     },
+    getAssistantInstruction(),
   ];
 
   return initMessagesPrompt;
