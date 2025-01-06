@@ -1,0 +1,71 @@
+name: Release and Upload Artifact
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release-and-upload:
+    runs-on: windows-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: yarn install
+
+      # Build the extension
+      - name: Build Extension
+        run: yarn run build
+
+      # Package the extension as a .vsix file
+      - name: Package Extension
+        run: yarn run package:vsix
+
+      # Verify the .vsix file exists
+      - name: Verify .vsix File
+        run: |
+          if (!(Test-Path *.vsix)) {
+            Write-Error "Error: No .vsix file was found!" 
+            exit 1
+          }
+
+      # Upload the .vsix file as an artifact
+      - name: Upload VSIX Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProCommit.vsix
+          path: '*.vsix'
+
+      # Create a new release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      # Upload the .vsix file to the release
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: '*.vsix'
+          asset_name: ProCommit.vsix
+          asset_content_type: application/octet-stream
