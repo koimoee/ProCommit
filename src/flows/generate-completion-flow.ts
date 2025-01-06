@@ -4,9 +4,7 @@ import { CommitMessageWriter } from "@procommit/scm/commit-message-writers/commi
 
 import { Flow } from "./flow";
 
-type GenerateCompletionFlowProps = {
-  delimeter?: string;
-};
+type GenerateCompletionFlowProps = {};
 
 export class GenerateCompletionFlow
   implements Flow<GenerateCompletionFlowProps>
@@ -35,10 +33,7 @@ export class GenerateCompletionFlow
       );
     }
 
-    const commitMessage = await this.msgGenerator.generate(
-      diff,
-      props.delimeter
-    );
+    const commitMessage = await this.msgGenerator.generate(diff);
 
     if (!commitMessage) {
       throw new Error("No commit message were generated. Try again.");
