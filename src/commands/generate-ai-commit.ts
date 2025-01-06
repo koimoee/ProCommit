@@ -114,14 +114,17 @@ export async function generateAiCommitCommand() {
         switch (configuration.general.messageApproveMethod) {
           case "Quick pick":
             const quickPickResult = await vscode.window.showQuickPick(
-              ["Yes", "No"],
+              [
+                { label: "Yes", detail: message },
+                { label: "No" }
+              ],
               {
-                title: `Use this commit message?: ${message}`,
+                title: "Use this commit message?"
               }
             );
 
             return {
-              result: quickPickResult === "Yes",
+              result: quickPickResult?.label === "Yes",
               edited: false,
             };
           case "Message file":
@@ -136,15 +139,13 @@ export async function generateAiCommitCommand() {
       }
     );
 
-    const delimeter = configuration.appearance.delimeter;
-
     logToOutputChannel("Running generateCompletionFlow");
 
     await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
         cancellable: false,
-        title: "Generating AI Commit message",
+        title: "Generating Commit message",
       },
       async (progress) => {
         let increment = 0;
@@ -157,16 +158,16 @@ export async function generateAiCommitCommand() {
           200
         );
 
-        await generateCompletionFlow.run({ delimeter });
+        await generateCompletionFlow.run({});
       }
     );
   } catch (error: any) {
     if (error.isAxiosError && error.response?.data?.error?.message) {
       logToOutputChannel(
-        `OpenAI API error: ${error.response.data.error.message}`
+        `API error: ${error.response.data.error.message}`
       );
       vscode.window.showErrorMessage(
-        `OpenAI API error: ${error.response.data.error.message}`
+        `API error: ${error.response.data.error.message}`
       );
       return;
     }
