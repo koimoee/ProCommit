@@ -58,6 +58,10 @@
       "properties": {
         "procommit.general.generator": {
           "type": "string",
+          "enum": [
+            "ChatGPT",
+            "Custom"
+          ],
           "default": "ChatGPT",
           "description": "Generator used to create commit messages"
         },
@@ -78,7 +82,7 @@
         "procommit.openAI.gptVersion": {
           "type": "string",
           "default": "gpt-3.5-turbo-16k",
-          "description": "Version of GPT used"
+          "description": "Model Version used for generating AI commit messages"
         },
         "procommit.openAI.customEndpoint": {
           "type": "string",
@@ -100,10 +104,7 @@
           "enum": [
             "English",
             "Japanese",
-            "Spanish",
-            "French",
-            "German",
-            "Chinese"
+            "Russian"
           ],
           "default": "English",
           "description": "Language used for commit messages"
