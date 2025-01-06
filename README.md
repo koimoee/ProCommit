@@ -39,4 +39,4 @@ Pro Commit extension contributes the following settings:
 
 ## License
 
-Released under [MIT](/LICENSE) by [@prplmoe](https://github.com/koimoee).
+Released under [MIT](/LICENSE) by [@Kochan](https://github.com/koimoee).
