@@ -6,7 +6,7 @@ import { DeepKey } from "./types";
 const configurationSchema = z.object({
   general: z.object({
     generator: z
-      .enum(["ChatGPT"])
+      .enum(["ChatGPT", "Custom"])
       .default("ChatGPT")
       .catch("ChatGPT")
       .optional(),
@@ -16,7 +16,7 @@ const configurationSchema = z.object({
       .catch("Quick pick")
       .optional(),
     language: z
-      .enum(["English", "Japanese"])
+      .enum(["English", "Japanese", "Russian"])
       .default("English")
       .catch("English")
       .optional(),
@@ -24,20 +24,6 @@ const configurationSchema = z.object({
   openAI: z.object({
     apiKey: z.string().optional(),
     gptVersion: z.string().optional(),
-    /* gptVersion: z
-      .enum([
-        "gpt-4",
-        "gpt-4-0613",
-        "gpt-4-32k",
-        "gpt-4-32k-0613",
-        "gpt-3.5-turbo",
-        "gpt-3.5-turbo-0613",
-        "gpt-3.5-turbo-16k",
-        "gpt-3.5-turbo-16k-0613",
-      ])
-      .default("gpt-3.5-turbo-16k")
-      .catch("gpt-3.5-turbo-16k")
-      .optional(), */
     customEndpoint: z.string().optional(),
     temperature: z.number().optional(),
     maxTokens: z.number().optional(),
