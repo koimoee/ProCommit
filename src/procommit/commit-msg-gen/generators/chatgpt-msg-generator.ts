@@ -1,9 +1,3 @@
-/*
- * This code includes portions of code from the opencommit project, which is
- * licensed under the MIT License. Copyright (c) Dima Sukharev.
- * The original code can be found at https://github.com/di-sukharev/opencommit/blob/master/src/generateCommitMessageFromGitDiff.ts.
- */
-
 import {
   ChatCompletionRequestMessage,
   ChatCompletionRequestMessageRoleEnum,
@@ -12,14 +6,16 @@ import {
 } from "openai";
 
 import { trimNewLines } from "@utils/text";
-import { Configuration as AppConfiguration } from "@utils/configuration";
+import { getLanguage, Configuration as AppConfiguration } from "@utils/configuration";
 
 import { MsgGenerator } from "./msg-generator";
+
+const language = getLanguage();
 
 const initMessagesPrompt: Array<ChatCompletionRequestMessage> = [
   {
     role: ChatCompletionRequestMessageRoleEnum.System,
-    content: `You are to act as the author of a commit message in git. Your mission is to create clean and comprehensive commit messages in the conventional commit convention. I'll send you an output of 'git diff --staged' command, and you convert it into a single commit message. Do not preface the commit with anything, use the present tense. Don't add any descriptions to the commit, only commit message. Use English language to answer. Ensure the commit message is concise and follows the format: <type>(<scope>): <subject>. The available types are: feat, fix, docs, style, refactor, perf, test, chore. The scope should be the filename or a relevant module name without any folder trailing slash. Generate a single commit message that summarizes all changes.`,
+    content: `You are to act as the author of a commit message in git. Your mission is to create clean and comprehensive commit messages in the conventional commit convention. I'll send you an output of 'git diff --staged' command, and you convert it into a single commit message. Do not preface the commit with anything, use the present tense. Don't add any descriptions to the commit, only commit message. Use ${language} language to answer. Ensure the commit message is concise and follows the format: <type>(<scope>): <subject>. The available types are: feat, fix, docs, style, refactor, perf, test, chore, build, ci, revert. The scope should be the filename or a relevant module and filename should without folder and folder trailing slash. Generate a single commit message that summarizes all changes.`,
   },
   {
     role: ChatCompletionRequestMessageRoleEnum.User,
