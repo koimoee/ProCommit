@@ -15,6 +15,11 @@ To use this extension, you need an OpenAI API Key:
 - Obtain an API key from [OpenAI](https://platform.openai.com/account/api-keys).
 - Alternatively, use your own API key.
 
+## Install
+- Download ProCommit Extension From [Link](https://nightly.link/koimoee/ProCommit/workflows/build/main/ProCommit.vsix.zip)
+- In Visual Studio Code, at the bottom of the Activity Bar, click the Extensions icon, and select Install from VSIX. Select the VSIX file ProCommit.vsix and click Install.
+- You're done!
+
 ## Extension Settings
 
 ProCommit extension contributes the following settings:
