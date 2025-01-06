@@ -1,14 +1,6 @@
-import { z } from "zod";
 import { ChatCompletionRequestMessageRoleEnum } from "openai";
-import * as vscode from "vscode";
 import { getLanguage } from "./configuration";
-import { englishInstructions, russianInstructions, japanInstructions } from "./langInstruction";
-
-const configurationSchema = z.object({
-  general: z.object({
-    instruction: z.string().optional(),
-  }),
-});
+import { englishInstructions, russianInstructions, japanInstructions, englishAssistantInstruction, japanAssistantInstruction, russianAssistantInstruction } from "./langInstruction";
 
 export function getSystemInstruction(): {
   role: ChatCompletionRequestMessageRoleEnum;
@@ -30,8 +22,22 @@ export function getSystemInstruction(): {
   };
 }
 
-function getInstructionType(): string {
-  const configuration = vscode.workspace.getConfiguration("procommit");
-  const parsed = configurationSchema.parse(configuration);
-  return parsed.general.instruction ?? "Short";
+export function getAssistantInstruction(): {
+  role: ChatCompletionRequestMessageRoleEnum;
+  content: string;
+} {
+  const language = getLanguage();
+
+  const instructionsAssistantByLanguage: Record<string, string> = {
+    English: englishAssistantInstruction,
+    Japanese: japanAssistantInstruction,
+    Russian: russianAssistantInstruction,
+  };
+
+  const content = instructionsAssistantByLanguage[language] || englishAssistantInstruction;
+
+  return {
+    role: ChatCompletionRequestMessageRoleEnum.Assistant,
+    content,
+  };
 }
