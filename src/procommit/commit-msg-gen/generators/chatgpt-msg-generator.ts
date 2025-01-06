@@ -19,7 +19,7 @@ import { MsgGenerator } from "./msg-generator";
 const initMessagesPrompt: Array<ChatCompletionRequestMessage> = [
   {
     role: ChatCompletionRequestMessageRoleEnum.System,
-    content: `You are to act as the author of a commit message in git. Your mission is to create clean and comprehensive commit messages in the conventional commit convention. I'll send you an output of 'git diff --staged' command, and you convert it into a commit message. Do not preface the commit with anything, use the present tense. Don't add any descriptions to the commit, only commit message. Use english language to answer.`,
+    content: `You are to act as the author of a commit message in git. Your mission is to create clean and comprehensive commit messages in the conventional commit convention. I'll send you an output of 'git diff --staged' command, and you convert it into a single commit message. Do not preface the commit with anything, use the present tense. Don't add any descriptions to the commit, only commit message. Use English language to answer. Ensure the commit message is concise and follows the format: <type>(<scope>): <subject>. The available types are: feat, fix, docs, style, refactor, perf, test, chore. The scope should be the filename or a relevant module name without any folder trailing slash. Generate a single commit message that summarizes all changes.`,
   },
   {
     role: ChatCompletionRequestMessageRoleEnum.User,
@@ -48,8 +48,7 @@ const initMessagesPrompt: Array<ChatCompletionRequestMessage> = [
   },
   {
     role: ChatCompletionRequestMessageRoleEnum.Assistant,
-    content: `fix(server.ts): change port variable case from lowercase port to uppercase PORT
-        feat(server.ts): add support for process.env.PORT environment variable`,
+    content: `fix(server.ts): change port variable case from lowercase port to uppercase PORT`,
   },
 ];
 
@@ -84,7 +83,7 @@ export class ChatgptMsgGenerator implements MsgGenerator {
     this.config = config;
   }
 
-  async generate(diff: string, delimeter?: string) {
+  async generate(diff: string) {
     const messages = generateCommitMessageChatCompletionPrompt(diff);
     const { data } = await this.openAI.createChatCompletion({
       model: this.config?.gptVersion || defaultModel,
@@ -100,7 +99,7 @@ export class ChatgptMsgGenerator implements MsgGenerator {
       throw new Error("No commit message were generated. Try again.");
     }
 
-    const alignedCommitMessage = trimNewLines(commitMessage, delimeter);
+    const alignedCommitMessage = trimNewLines(commitMessage);
     return alignedCommitMessage;
   }
 }
