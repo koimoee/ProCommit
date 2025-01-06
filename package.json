@@ -1,7 +1,7 @@
 {
   "name": "pro-commit",
   "displayName": "ProCommit",
-  "description": "VS Code extension which helps to generate AI commit messages using ChatGPT & Custom Endpoint.",
+  "description": "VS Code extension which helps to generate AI commit messages using ChatGPT & Custom One.",
   "version": "1.0.5",
   "homepage": "https://github.com/koimoee/ProCommit#readme",
   "bugs": "https://github.com/koimoee/ProCommit/issues",
@@ -13,7 +13,7 @@
   "engines": {
     "vscode": "^1.76.0"
   },
-  "publisher": "prplmoe",
+  "publisher": "kochan",
   "categories": [
     "Other",
     "SCM Providers"
@@ -109,8 +109,8 @@
     "build": "npm run esbuild-base -- --sourcemap",
     "watch": "npm run esbuild-base -- --sourcemap --watch",
     "lint": "eslint src --ext ts",
-    "package-vsix": "vsce package",
-    "package": "vsce package -o packages",
+    "package:vsix": "vsce package",
+    "package:out": "vsce package -o packages",
     "package:publish": "vsce publish"
   },
   "devDependencies": {
