@@ -31,7 +31,7 @@ jobs:
 
       # Package the extension as a .vsix file
       - name: Package Extension
-        run: yarn run package-vsix
+        run: yarn run package:vsix
 
       # Verify the .vsix file exists
       - name: Verify .vsix File
