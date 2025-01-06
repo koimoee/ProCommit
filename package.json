@@ -13,7 +13,8 @@
   "engines": {
     "vscode": "^1.76.0"
   },
-  "publisher": "kochan",
+  "publisher": "Kochan",
+  "identifier": "kochan.pro-commit",
   "categories": [
     "Other",
     "SCM Providers"
