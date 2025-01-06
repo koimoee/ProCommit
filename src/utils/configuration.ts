@@ -21,7 +21,8 @@ const configurationSchema = z.object({
   }),
   openAI: z.object({
     apiKey: z.string().optional(),
-    gptVersion: z
+    gptVersion: z.string().optional(),
+    /* gptVersion: z
       .enum([
         "gpt-4",
         "gpt-4-0613",
@@ -34,7 +35,7 @@ const configurationSchema = z.object({
       ])
       .default("gpt-3.5-turbo-16k")
       .catch("gpt-3.5-turbo-16k")
-      .optional(),
+      .optional(), */
     customEndpoint: z.string().optional(),
     temperature: z.number().optional(),
     maxTokens: z.number().optional(),
