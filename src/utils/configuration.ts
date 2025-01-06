@@ -54,6 +54,12 @@ export async function setConfigurationValue(
   await configuration.update(key, value, vscode.ConfigurationTarget.Global);
 }
 
+export function getLanguage(): string {
+  const configuration = vscode.workspace.getConfiguration("procommit");
+  const parsed = configurationSchema.parse(configuration);
+  return parsed.general.language ?? "English";
+}
+
 export function getConfiguration() {
   const configuration = vscode.workspace.getConfiguration("procommit");
   return configurationSchema.parse(configuration);
