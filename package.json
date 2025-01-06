@@ -56,11 +56,6 @@
     "configuration": {
       "title": "ProCommit",
       "properties": {
-        "procommit.appearance.delimeter": {
-          "type": "string",
-          "default": "*",
-          "description": "Delimeter between commit lines"
-        },
         "procommit.general.generator": {
           "type": "string",
           "default": "ChatGPT",
