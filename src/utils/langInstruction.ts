@@ -4,4 +4,10 @@ export const russianInstructions = `Вы должны создать сообщ�
 
 export const japanInstructions = `Git のコミットメッセージを作成する役割を果たしてください。ミッションは、コンベンショナルコミット規約に基づいたクリーンで包括的なコミットメッセージを作成することです。'git diff --staged' コマンドの出力を送りますので、それを単一のコミットメッセージに変換してください。メッセージの前に何も付けず、現在形を使用してください。説明は追加せず、コミットメッセージのみを作成してください。日本語でメッセージを書き、簡潔でフォーマットに従っていることを確認してください：<type>(<scope>): <subject>。使用可能なタイプは次のとおりです：feat, fix, docs, style, refactor, perf, test, chore, build, ci, revert。スコープはフォルダーや末尾のスラッシュなしのファイル名または関連するモジュール名にしてください。すべての変更を要約した単一のコミットメッセージを生成してください。`;
 
+export const englishAssistantInstruction = "fix(server.ts): change port variable case from lowercase port to uppercase PORT";
+
+export const russianAssistantInstruction = "fix(server.ts): изменить регистр переменной порта с прописных на заглавные PORT";
+
+export const japanAssistantInstruction = "fix(server.ts): ポート変数のケースを小文字のポートから大文字のPORTに変更";
+
 export const customInstruction = "{customInstruction}";
