@@ -1,16 +1,12 @@
 import { getConfiguration } from "./configuration";
 
-export function trimNewLines(str: string, delimeter?: string) {
+export function trimNewLines(str: string) {
   const stringParts = str.split("\n");
   if (stringParts.length === 0) {
     return str;
   }
 
   let formattedStrings = stringParts.map((part) => part.trimStart());
-
-  if (delimeter && delimeter.trim() !== "") {
-    formattedStrings = formattedStrings.map((str) => `${delimeter}${str}`);
-  }
 
   return formattedStrings.join("\n");
 }
