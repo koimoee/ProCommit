@@ -1,8 +1,8 @@
 {
   "name": "pro-commit",
   "displayName": "ProCommit",
-  "description": "VS Code extension which helps to generate AI commit messages using ChatGPT & Custom One.",
-  "version": "1.0.0",
+  "description": "VS Code extension which helps to generate AI commit messages using ChatGPT & a Custom Endpoint.",
+  "version": "2.0.0",
   "homepage": "https://prplmoe.me",
   "bugs": "https://github.com/koimoee/ProCommit/issues",
   "repository": {
@@ -14,7 +14,6 @@
     "vscode": "^1.76.0"
   },
   "publisher": "Kochan",
-  "identifier": "kochan.pro-commit",
   "categories": [
     "Other",
     "SCM Providers"
