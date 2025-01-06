@@ -47,7 +47,16 @@ jobs:
           name: ProCommit.vsix
           path: '*.vsix'
 
-      # Create a new release
+      # Generate release notes using Release Changelog Builder
+      - name: Generate Release Notes
+        id: generate_release_notes
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          configuration: .github/release-changelog-builder-config.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Create a new release with auto-generated release notes
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -58,6 +67,7 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+          body: ${{ steps.generate_release_notes.outputs.changelog }}
 
       # Upload the .vsix file to the release
       - name: Upload Release Asset
