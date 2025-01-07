@@ -9,6 +9,10 @@ jobs:
   release-and-upload:
     runs-on: windows-latest
 
+    permissions:
+      contents: write
+      discussions: write
+
     steps:
       # Checkout repository
       - name: Checkout Repository
@@ -71,26 +75,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Create a new release with auto-generated release notes
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
-          draft: false
+          files: '*.vsix'
           prerelease: false
-          body: ${{ steps.generate_release_notes.outputs.changelog }}
-
-      # Upload the .vsix file to the release
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: '*.vsix'
-          asset_name: ProCommit.vsix
-          asset_content_type: application/octet-stream
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
