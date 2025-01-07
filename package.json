@@ -128,16 +128,16 @@
     "@types/vscode": "^1.76.0",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
-    "@vscode/test-electron": "^2.3.0",
+    "@vscode/test-electron": "^2.4.1",
     "@vscode/vsce": "^3.1.0",
     "esbuild": "^0.17.14",
     "eslint": "^8.36.0",
-    "glob": "^8.1.0",
+    "glob": "^11.0.0",
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "execa": "^7.1.1",
+    "execa": "^9.5.2",
     "openai": "^3.3.0",
-    "zod": "^3.21.4"
+    "zod": "^3.24.1"
   }
 }
