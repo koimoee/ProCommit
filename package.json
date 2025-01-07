@@ -2,7 +2,7 @@
   "name": "pro-commit",
   "displayName": "ProCommit",
   "description": "VS Code extension which helps to generate AI commit messages using ChatGPT & a Custom Endpoint.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://prplmoe.me",
   "bugs": "https://github.com/koimoee/ProCommit/issues",
   "repository": {
