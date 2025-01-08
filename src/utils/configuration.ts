@@ -16,7 +16,7 @@ const configurationSchema = z.object({
       .catch("Quick pick")
       .optional(),
     language: z
-      .enum(["English", "Japanese", "Russian"])
+      .enum(["English", "Japanese", "Russian", "Korean", "German"])
       .default("English")
       .catch("English")
       .optional(),
