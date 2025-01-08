@@ -1,20 +1,28 @@
-# ProCommit
-
-ProCommit is a VS Code extension that helps generate AI commit messages using ChatGPT or a custom endpoint.
+<h2 align="center">
+ProCommit
+</h2>
+<p align="center">
+VS Code extension which helps to generate AI commit messages using ChatGPT & a Custom Endpoint.
+</p>
+<p align="center">
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/koimoee/ProCommit/.github%2Fworkflows%2Fbuild.yml?style=flat-square">
+<img alt="VSX" src="https://img.shields.io/open-vsx/v/Kochan/pro-commit?style=flat-square&label=OpenVSX">
+</p>
 
 ## Features
 
 - Generate commit messages by pressing the 'Generate AI commit' button in the source control tab.
 - Alternatively, generate commit messages from the command palette by executing the 'Generate AI commit' command.
 - Generating commit message using different language.
+- More customizable
 
 ![Example of usage](assets/images/example.gif)
 
 ## Requirements
 
-To use this extension, you need an OpenAI API Key:
+To use this extension, you need an API Key:
 - Obtain an API key from [OpenAI](https://platform.openai.com/account/api-keys).
-- Alternatively, use your own API key.
+- Alternatively, you can use your own custom API key.
 
 ## Install
 - Download ProCommit Extension From [Marketplace](https://marketplace.visualstudio.com/items?itemName=Kochan.pro-commit)
