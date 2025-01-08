@@ -1,8 +1,8 @@
 {
   "name": "pro-commit",
   "displayName": "ProCommit",
-  "description": "VS Code extension which helps to generate AI commit messages using ChatGPT & a Custom Endpoint.",
-  "version": "2.0.2",
+  "description": "📝 A Customizable VS Code extension for AI-generated commit messages.",
+  "version": "2.0.3",
   "homepage": "https://prplmoe.me",
   "bugs": "https://github.com/koimoee/ProCommit/issues",
   "repository": {
@@ -65,6 +65,18 @@
           "default": "ChatGPT",
           "description": "Generator used to create commit messages"
         },
+        "procommit.general.language": {
+          "type": "string",
+          "enum": [
+            "English",
+            "Japanese",
+            "Korean",
+            "German",
+            "Russian"
+          ],
+          "default": "English",
+          "description": "Language used for commit messages"
+        },
         "procommit.general.messageApproveMethod": {
           "type": "string",
           "enum": [
@@ -98,16 +110,6 @@
           "type": "number",
           "default": 196,
           "description": "The maximum number of tokens to generate. Requests can use up to 2048 tokens shared between prompt and completion"
-        },
-        "procommit.general.language": {
-          "type": "string",
-          "enum": [
-            "English",
-            "Japanese",
-            "Russian"
-          ],
-          "default": "English",
-          "description": "Language used for commit messages"
         }
       }
     }
