@@ -79,14 +79,14 @@
           "default": "",
           "description": "Needed for generating AI commit messages"
         },
-        "procommit.openAI.gptVersion": {
+        "procommit.openAI.modelVersion": {
           "type": "string",
           "default": "gpt-3.5-turbo-16k",
           "description": "Model Version used for generating AI commit messages"
         },
         "procommit.openAI.customEndpoint": {
           "type": "string",
-          "default": "",
+          "default": "https://api.openai.com/v1",
           "description": "Custom endpoint URL"
         },
         "procommit.openAI.temperature": {
