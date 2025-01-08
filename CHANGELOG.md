@@ -4,6 +4,7 @@
 
 ### Added
 
+- docs: Update README to enhance description of the VS Code extension
 - Update More Informative Docs
 - Add Korean and German language
 - Add Korean and German to language options in configuration schema
@@ -13,6 +14,7 @@
 ### Changed
 
 - fix enum modelVersion
+- chore: Update package, enhance description and add more language support for commit messages
 
 
 ## 2.0.2 - 2025-01-09
