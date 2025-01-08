@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.3 - 2025-01-09
+
+### Added
+
+- Update More Informative Docs
+- Add Korean and German language
+- Add Korean and German to language options in configuration schema
+- Add support for Korean and German instructions in customInstruction utility
+- docs(langInstruction): add instructions in Korean and German
+
+### Changed
+
+- fix enum modelVersion
+
+
 ## 2.0.2 - 2025-01-09
 
 ### Changed
