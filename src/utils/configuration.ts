@@ -23,8 +23,12 @@ const configurationSchema = z.object({
   }),
   openAI: z.object({
     apiKey: z.string().optional(),
-    gptVersion: z.string().optional(),
-    customEndpoint: z.string().optional(),
+    modelVersion: z.string().optional(),
+    customEndpoint: z
+      .string()
+      .default("https://api.openai.com/v1")
+      .catch("https://api.openai.com/v1")
+      .optional(),
     temperature: z.number().optional(),
     maxTokens: z.number().optional(),
   }),
