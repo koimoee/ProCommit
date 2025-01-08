@@ -2,7 +2,7 @@
 ProCommit
 </h2>
 <p align="center">
-VS Code extension which helps to generate AI commit messages using ChatGPT & a Custom Endpoint.
+📝 A Customizable VS Code extension for AI-generated commit messages.
 </p>
 <p align="center">
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/koimoee/ProCommit/.github%2Fworkflows%2Fbuild.yml?style=flat-square">
