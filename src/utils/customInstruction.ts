@@ -1,6 +1,6 @@
 import { ChatCompletionRequestMessageRoleEnum } from "openai";
 import { getLanguage } from "./configuration";
-import { englishInstructions, russianInstructions, japanInstructions, englishAssistantInstruction, japanAssistantInstruction, russianAssistantInstruction } from "./langInstruction";
+import { englishInstructions, russianInstructions, japanInstructions, englishAssistantInstruction, japanAssistantInstruction, russianAssistantInstruction, koreanInstructions, germanInstructions, koreanAssistantInstruction, germanAssistantInstruction } from "./langInstruction";
 
 export function getSystemInstruction(): {
   role: ChatCompletionRequestMessageRoleEnum;
@@ -12,6 +12,8 @@ export function getSystemInstruction(): {
     English: englishInstructions,
     Japanese: japanInstructions,
     Russian: russianInstructions,
+    Korean: koreanInstructions,
+    German: germanInstructions,
   };
 
   const content = instructionsByLanguage[language] || englishInstructions;
@@ -32,6 +34,8 @@ export function getAssistantInstruction(): {
     English: englishAssistantInstruction,
     Japanese: japanAssistantInstruction,
     Russian: russianAssistantInstruction,
+    Korean: koreanAssistantInstruction,
+    German: germanAssistantInstruction,
   };
 
   const content = instructionsAssistantByLanguage[language] || englishAssistantInstruction;
