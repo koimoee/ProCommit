@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.3 - 2025-01-09
+## 2.0.2 - 2025-01-09
 
 ### Changed
 
@@ -10,16 +10,11 @@
 
 ### Fixed
 
-- Fixed knows issues
-
-## 2.0.2 - 2025-01-09
-
-### Fixed
-
 - update model version configuration in ChatgptMsgGenerator
 - update release workflow to use softprops/action-gh-release and set permissions
 - update tag and release name references to use ref_name
 - add assistant instructions for English, Russian, and Japanese
+- Fixed another known issue
 
 
 
