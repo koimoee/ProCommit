@@ -1,6 +1,6 @@
 ---
-name: Request for Additional Language Support
-about: Suggest a new programming language to be supported
+name: Request for Language Support
+about: Suggest to add a new language to be supported
 title: "[Language Request] - [Your Language Here]"
 labels: enhancement
 assignees: 
