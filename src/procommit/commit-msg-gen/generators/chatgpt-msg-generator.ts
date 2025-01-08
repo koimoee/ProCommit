@@ -47,7 +47,7 @@ export class ChatgptMsgGenerator implements MsgGenerator {
   async generate(diff: string) {
     const messages = generateCommitMessageChatCompletionPrompt(diff);
     const { data } = await this.openAI.createChatCompletion({
-      model: this.config?.gptVersion || defaultModel,
+      model: this.config?.modelVersion || defaultModel,
       messages: messages,
       temperature: this.config?.temperature || defaultTemperature,
       ["max_tokens"]: this.config?.maxTokens || defaultMaxTokens,
