@@ -37,7 +37,7 @@ ProCommit extension contributes the following settings:
 ### OpenAI
 
 - `procommit.openAI.apiKey`: API Key needed for generating AI commit messages.
-- `procommit.openAI.gptVersion`: Version of GPT used.
+- `procommit.openAI.modelVersion`: Version of AI Model used.
 - `procommit.openAI.customEndpoint`: Custom endpoint URL.
 - `procommit.openAI.temperature`: Controls randomness. Lower values result in less random completions. As the temperature approaches zero, the model becomes deterministic and repetitive.
 - `procommit.openAI.maxTokens`: The maximum number of tokens to generate. Requests can use up to 2048 tokens shared between prompt and completion.
@@ -45,3 +45,7 @@ ProCommit extension contributes the following settings:
 ## License
 
 Released under the [MIT License](/LICENSE) by [@Kochan](https://github.com/koimoee).
+
+## Contributing
+
+If you want more languages to be supported, please open an issue on our [GitHub repository](https://github.com/koimoee/ProCommit/issues).
