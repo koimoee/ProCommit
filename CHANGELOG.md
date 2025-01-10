@@ -1,5 +1,36 @@
 # Changelog
 
+## 2.0.4 - 2025-01-11
+
+### Added
+
+- Introducing new icons
+- enhance command options in configuration
+- enhance lang instructions for concise git commit message generation (improve instruction significantly)
+- Added setTemperature command for configuring AI commit message temperature
+- Added command to set AI model version
+- Added command to set message approval method
+- Added command to set maximum tokens
+- Added command to set language
+- Added command to set generator
+- Add command to set custom endpoint
+- Add new command exports for generator configuration for indwx main file
+- Added additional command registrations for commit message generation settings
+
+### Changes
+
+- Rename progress notification title
+
+### Fixed
+
+- remove commented-out code for clarity from msg-generator
+- fixed known issue about incorrect given commit message
+- fixed issue about commit message contain unrelated comments and diff
+
+### Removed
+
+- Removed ChatCompletionRequestMessageRoleEnum.Assistant for customInstruction
+
 ## 2.0.3 - 2025-01-09
 
 ### Added
