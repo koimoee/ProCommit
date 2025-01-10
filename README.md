@@ -16,10 +16,7 @@ ProCommit
 - Generating commit message using different language.
 - More customizable
 
-<video width="600" controls>
-    <source src="https://cdn.discordapp.com/attachments/1298331940365013072/1327403316849803354/2025-01-11_05-01-47.mp4?ex=6782f02c&is=67819eac&hm=0c61eb28eb1dc48b16b957f7ca749fb1f1148ab311338df98479b863eab58b79&" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/641be037-2d13-4d3e-8c32-e73ca8a36070
 
 ## Requirements
 
