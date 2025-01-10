@@ -19,8 +19,9 @@ function generateCommitMessageChatCompletionPrompt(
     {
       role: ChatCompletionRequestMessageRoleEnum.User,
       content: diff,
-    },
+    }/*,
     getAssistantInstruction(),
+    */
   ];
 
   return initMessagesPrompt;
