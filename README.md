@@ -1,3 +1,5 @@
+<div align="center">
+<img src='https://raw.githubusercontent.com/koimoee/ProCommit/refs/heads/main/assets/images/icon.png' alt='logo' width='80px' margin="0px" >
 <h2 align="center">
 ProCommit
 </h2>
@@ -8,6 +10,7 @@ ProCommit
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/koimoee/ProCommit/.github%2Fworkflows%2Fbuild.yml?style=flat-square">
 <img alt="VSX" src="https://img.shields.io/open-vsx/v/Kochan/pro-commit?style=flat-square&label=OpenVSX">
 </p>
+</div>
 
 ## Features
 
@@ -16,7 +19,7 @@ ProCommit
 - Generating commit message using different language.
 - More customizable
 
-https://github.com/user-attachments/assets/641be037-2d13-4d3e-8c32-e73ca8a36070
+![demo](./example/demo.gif)
 
 ## Requirements
 

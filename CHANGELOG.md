@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.5 - 2025-01-11
+
+### Fixed
+
+- Fixes Critical Error Cause Build Failed On Output!
+
 ## 2.0.4 - 2025-01-11
 
 ### Added
