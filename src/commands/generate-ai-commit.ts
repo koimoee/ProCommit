@@ -145,7 +145,7 @@ export async function generateAiCommitCommand() {
       {
         location: vscode.ProgressLocation.Notification,
         cancellable: false,
-        title: "Generating Commit message",
+        title: "Generating ProCommit",
       },
       async (progress) => {
         let increment = 0;
