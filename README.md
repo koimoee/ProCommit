@@ -16,19 +16,22 @@ ProCommit
 - Generating commit message using different language.
 - More customizable
 
-![Example of usage](assets/images/example.gif)
+<video width="600" controls>
+    <source src="example/exampleVideo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
 ## Requirements
 
 To use this extension, you need an API Key:
-- Obtain an API key from [OpenAI](https://platform.openai.com/account/api-keys).
-- Alternatively, you can use your own custom API key.
+- Obtain an API key from [OpenAI](https://platform.openai.com/account/api-keys) (Default endpoint).
+- Alternatively, you can use your own custom API key (Custom endpoint).
 
 ## Install
 - Download ProCommit Extension From [Marketplace](https://marketplace.visualstudio.com/items?itemName=Kochan.pro-commit)
 
 ## Install (Manually)
-- Download ProCommit Extension From [Link](https://nightly.link/koimoee/ProCommit/workflows/build/main/ProCommit.vsix.zip)
+- Download ProCommit Extension From [Direct Link](https://nightly.link/koimoee/ProCommit/workflows/build/main/ProCommit.vsix.zip) or [VSIX Registry](https://marketplace.visualstudio.com/items?itemName=Kochan.pro-commit)
 - In Visual Studio Code, at the bottom of the Activity Bar, click the Extensions icon, and select Install from VSIX. Select the VSIX file ProCommit.vsix and click Install.
 - You're done!
 

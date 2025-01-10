@@ -2,7 +2,7 @@
   "name": "pro-commit",
   "displayName": "ProCommit",
   "description": "📝 A Customizable VS Code extension for AI-generated commit messages.",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "homepage": "https://prplmoe.me",
   "bugs": "https://github.com/koimoee/ProCommit/issues",
   "repository": {
@@ -33,7 +33,8 @@
     "commands": [
       {
         "command": "procommit.generateAICommit",
-        "title": "Generate AI commit",
+        "title": "Generate ProCommit",
+        "category": "ProCommit",
         "icon": {
           "dark": "assets/icons/commit-dark.svg",
           "light": "assets/icons/commit-light.svg"
@@ -41,11 +42,79 @@
       },
       {
         "command": "procommit.setOpenAIApiKey",
-        "title": "Set API key"
+        "title": "Set API key",
+        "category": "ProCommit"
+      },
+      {
+        "command": "procommit.setGenerator",
+        "title": "Set Generator",
+        "category": "ProCommit",
+        "arguments": [
+          {
+            "name": "generator",
+            "description": "Generator used to create commit messages",
+            "type": "string",
+            "enum": [
+              "ChatGPT",
+              "Custom"
+            ]
+          }
+        ]
+      },
+      {
+        "command": "procommit.setLanguage",
+        "title": "Set Language",
+        "category": "ProCommit",
+        "arguments": [
+          {
+            "name": "language",
+            "description": "Language used for commit messages",
+            "type": "string",
+            "enum": [
+              "English",
+              "Japanese",
+              "Korean",
+              "German",
+              "Russian"
+            ]
+          }
+        ]
+      },
+      {
+        "command": "procommit.setMessageApproveMethod",
+        "title": "Set Message Approve Method",
+        "category": "ProCommit"
+      },
+      {
+        "command": "procommit.setModelVersion",
+        "title": "Set Model Version",
+        "category": "ProCommit"
+      },
+      {
+        "command": "procommit.setCustomEndpoint",
+        "title": "Set Custom Endpoint",
+        "category": "ProCommit"
+      },
+      {
+        "command": "procommit.setTemperature",
+        "title": "Set Temperature",
+        "category": "ProCommit"
+      },
+      {
+        "command": "procommit.setMaxTokens",
+        "title": "Set Max Tokens",
+        "category": "ProCommit"
       }
     ],
     "menus": {
       "scm/title": [
+        {
+          "command": "procommit.generateAICommit",
+          "when": "scmProvider == git",
+          "group": "navigation"
+        }
+      ],
+      "scm/inputBox": [
         {
           "command": "procommit.generateAICommit",
           "when": "scmProvider == git",
@@ -141,5 +210,8 @@
     "execa": "^9.5.2",
     "openai": "^3.3.0",
     "zod": "^3.24.1"
-  }
+  },
+  "enabledApiProposals": [
+    "contribSourceControlInputBoxMenu"
+  ]
 }
