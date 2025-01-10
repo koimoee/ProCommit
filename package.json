@@ -210,8 +210,5 @@
     "execa": "^9.5.2",
     "openai": "^3.3.0",
     "zod": "^3.24.1"
-  },
-  "enabledApiProposals": [
-    "contribSourceControlInputBoxMenu"
-  ]
+  }
 }
