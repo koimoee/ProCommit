@@ -14,8 +14,8 @@ ProCommit
 
 ## Features
 
-- Generate commit messages by pressing the 'Generate AI commit' button in the source control tab.
-- Alternatively, generate commit messages from the command palette by executing the 'Generate AI commit' command.
+- Emoji Features.
+- Custom Generator, Endpoint, and Api Key.
 - Generating commit message using different language.
 - More customizable
 
