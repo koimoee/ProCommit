@@ -1,12 +1,13 @@
 import { ChatCompletionRequestMessageRoleEnum } from "openai";
-import { getLanguage } from "./configuration";
-import { englishInstructions, russianInstructions, japanInstructions, englishAssistantInstruction, japanAssistantInstruction, russianAssistantInstruction, koreanInstructions, germanInstructions, koreanAssistantInstruction, germanAssistantInstruction } from "./langInstruction";
+import { getLanguage, getShowEmoji } from "./configuration";
+import { englishInstructions, russianInstructions, japanInstructions, englishAssistantInstruction, japanAssistantInstruction, russianAssistantInstruction, koreanInstructions, germanInstructions, koreanAssistantInstruction, germanAssistantInstruction, emojiInstructions } from "./langInstruction";
 
 export function getSystemInstruction(): {
   role: ChatCompletionRequestMessageRoleEnum;
   content: string;
 } {
   const language = getLanguage();
+  const showEmoji = getShowEmoji();
 
   const instructionsByLanguage: Record<string, string> = {
     English: englishInstructions,
@@ -16,7 +17,10 @@ export function getSystemInstruction(): {
     German: germanInstructions,
   };
 
-  const content = instructionsByLanguage[language] || englishInstructions;
+  let content = instructionsByLanguage[language] || englishInstructions;
+  if (showEmoji) {
+    content += emojiInstructions;
+  }
 
   return {
     role: ChatCompletionRequestMessageRoleEnum.System,
@@ -29,6 +33,7 @@ export function getAssistantInstruction(): {
   content: string;
 } {
   const language = getLanguage();
+  const showEmoji = getShowEmoji();
 
   const instructionsAssistantByLanguage: Record<string, string> = {
     English: englishAssistantInstruction,
@@ -38,7 +43,10 @@ export function getAssistantInstruction(): {
     German: germanAssistantInstruction,
   };
 
-  const content = instructionsAssistantByLanguage[language] || englishAssistantInstruction;
+  let content = instructionsAssistantByLanguage[language] || englishAssistantInstruction;
+  if (showEmoji) {
+    content += emojiInstructions;
+  }
 
   return {
     role: ChatCompletionRequestMessageRoleEnum.Assistant,
