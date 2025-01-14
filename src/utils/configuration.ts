@@ -21,6 +21,7 @@ const configurationSchema = z.object({
       .catch("English")
       .optional(),
     useMultipleResults: z.boolean().default(false).catch(false).optional(),
+    showEmoji: z.boolean().default(false).catch(false).optional(),
   }),
   openAI: z.object({
     apiKey: z.string().optional(),
@@ -54,4 +55,10 @@ export function getLanguage(): string {
 export function getConfiguration() {
   const configuration = vscode.workspace.getConfiguration("procommit");
   return configurationSchema.parse(configuration);
+}
+
+export function getShowEmoji(): boolean {
+  const configuration = vscode.workspace.getConfiguration("procommit");
+  const parsed = configurationSchema.parse(configuration);
+  return parsed.general.showEmoji ?? false;
 }
