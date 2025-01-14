@@ -7,7 +7,7 @@ import {
 
 import { trimNewLines } from "@utils/text";
 import { Configuration as AppConfiguration } from "@utils/configuration";
-import { getSystemInstruction, getAssistantInstruction } from "@utils/customInstruction";
+import { getSystemInstruction } from "@utils/customInstruction";
 
 import { MsgGenerator } from "./msg-generator";
 
@@ -19,7 +19,7 @@ function generateCommitMessageChatCompletionPrompt(
     {
       role: ChatCompletionRequestMessageRoleEnum.User,
       content: diff,
-    }/*,
+    },/*
     getAssistantInstruction(),
     */
   ];
@@ -45,23 +45,26 @@ export class ChatgptMsgGenerator implements MsgGenerator {
     this.config = config;
   }
 
-  async generate(diff: string) {
+  async generate(diff: string): Promise<string> {
     const messages = generateCommitMessageChatCompletionPrompt(diff);
     const { data } = await this.openAI.createChatCompletion({
       model: this.config?.modelVersion || defaultModel,
       messages: messages,
+      n: 4,
       temperature: this.config?.temperature || defaultTemperature,
-      ["max_tokens"]: this.config?.maxTokens || defaultMaxTokens,
+      max_tokens: this.config?.maxTokens || defaultMaxTokens,
     });
 
-    const message = data?.choices[0].message;
-    const commitMessage = message?.content;
-
-    if (!commitMessage) {
-      throw new Error("No commit message was generated. Try again.");
+    if (!data || !data.choices || data.choices.length === 0) {
+      throw new Error("No commit messages were generated. Try again.");
     }
 
-    const alignedCommitMessage = trimNewLines(commitMessage);
-    return alignedCommitMessage;
+    // Collect all generated messages
+    const commitMessages = data.choices.map((choice) => {
+      const message = choice.message?.content;
+      return trimNewLines(message || "");
+    });
+
+    return commitMessages[0];
   }
 }
