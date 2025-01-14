@@ -143,6 +143,11 @@
           "default": "English",
           "description": "Language used for commit messages"
         },
+        "procommit.general.showEmoji": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include emojis in commit messages"
+        },
         "procommit.general.messageApproveMethod": {
           "type": "string",
           "enum": [
