@@ -20,6 +20,7 @@ const configurationSchema = z.object({
       .default("English")
       .catch("English")
       .optional(),
+    useMultipleResults: z.boolean().default(false).catch(false).optional(),
   }),
   openAI: z.object({
     apiKey: z.string().optional(),
