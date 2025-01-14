@@ -113,13 +113,6 @@
           "when": "scmProvider == git",
           "group": "navigation"
         }
-      ],
-      "scm/inputBox": [
-        {
-          "command": "procommit.generateAICommit",
-          "when": "scmProvider == git",
-          "group": "navigation"
-        }
       ]
     },
     "configuration": {
