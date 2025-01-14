@@ -80,8 +80,7 @@ export async function generateAiCommitCommand() {
   try {
     logToOutputChannel("Starting generateAiCommitCommand");
 
-    const gitExtension =
-      vscode.extensions.getExtension<GitExtension>("vscode.git");
+    const gitExtension = vscode.extensions.getExtension<GitExtension>("vscode.git");
 
     if (!gitExtension) {
       throw new Error("Git extension is not installed");
@@ -110,25 +109,46 @@ export async function generateAiCommitCommand() {
       messageGenerator,
       diffProvider,
       commitMessageWriter,
-      async (message) => {
+      async (message: string | string[]) => {
+        const messages = Array.isArray(message) ? message : [message];
         switch (configuration.general.messageApproveMethod) {
           case "Quick pick":
-            const quickPickResult = await vscode.window.showQuickPick(
-              [
-                { label: "Yes", detail: message },
-                { label: "No" }
-              ],
-              {
-                title: "Use this commit message?"
-              }
-            );
+            if (configuration.general.useMultipleResults) {
+              const quickPickItems = messages.map((msg: string, index: number) => ({
+                label: `Result ${index + 1}`,
+                detail: msg,
+              }));
 
-            return {
-              result: quickPickResult?.label === "Yes",
-              edited: false,
-            };
+              const quickPickResults = await vscode.window.showQuickPick(
+                quickPickItems,
+                {
+                  title: "Select commit messages",
+                  canPickMany: false,
+                }
+              );
+
+              return {
+                result: quickPickResults !== undefined,
+                edited: false,
+              };
+            } else {
+              const quickPickResult = await vscode.window.showQuickPick(
+                [
+                  { label: "Yes", detail: messages[0] },
+                  { label: "No" }
+                ],
+                {
+                  title: "Use this commit message?"
+                }
+              );
+
+              return {
+                result: quickPickResult?.label === "Yes",
+                edited: false,
+              };
+            }
           case "Message file":
-            const openFileResult = await openTempFileWithMessage(message);
+            const openFileResult = await openTempFileWithMessage(messages[0]);
             return openFileResult;
           default:
             return {
@@ -163,12 +183,8 @@ export async function generateAiCommitCommand() {
     );
   } catch (error: any) {
     if (error.isAxiosError && error.response?.data?.error?.message) {
-      logToOutputChannel(
-        `API error: ${error.response.data.error.message}`
-      );
-      vscode.window.showErrorMessage(
-        `API error: ${error.response.data.error.message}`
-      );
+      logToOutputChannel(`API error: ${error.response.data.error.message}`);
+      vscode.window.showErrorMessage(`API error: ${error.response.data.error.message}`);
       return;
     }
 
