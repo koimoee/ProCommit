@@ -17,7 +17,7 @@ I'll send you the output of the 'git diff --staged' command, and you should conv
 9. Make commit message kinda short but clearly.
 10. Do not included any slash in the scope.
 11. If multiple changes if possible use folder name as scope.
-12. Always use scope.
+12. Always use type and scope even with emoji or without emoji and no matter what! Type name must be included with emoji.
 
 **Example:** 
 fix(server.ts): change port variable case from lowercase port to uppercase PORT.
@@ -41,7 +41,7 @@ export const russianInstructions = `
 9. Сделайте сообщение о фиксации коротким, но понятным.
 10. Не включайте косую черту в область видимости
 11. Если возможно несколько изменений, используйте имя папки в качестве области видимости
-12. Всегда используйте область видимости.
+12. Всегда используйте тип и объем, даже с эмодзи или без них, и неважно, что! Тип должен быть включен с эмодзи.
 
 **Пример:**
 fix(server.ts): изменить регистр переменной порта с прописных на заглавные PORT.
@@ -65,7 +65,7 @@ Git のコミットメッセージを作成する役割を果たしてくださ�
 9. コミットメッセージを短く、しかし明確にしてください。
 10. スコープにスラッシュを入れないでください。
 11. 複数の変更がある場合、可能であればフォルダ名をスコープとして使用する
-12. 常にスコープを使用してください。
+12. 絵文字があってもなくても、そして何があっても、常にタイプとスコープを使用すること！ タイプ名は絵文字と一緒に含める必要があります。
 
 **例:**
 fix(server.ts): ポート変数のケースを小文字のポートから大文字のPORTに変更。
@@ -89,7 +89,7 @@ Git의 커밋 메시지를 작성하는 역할을 맡아주세요. 임무는 컨
 9. 커밋 메시지를 짧지만 명확하게 작성하십시오.
 10. 범위에 슬래시를 포함하지 마세요.
 11. 가능하면 폴더 이름을 범위로 사용하세요.
-12. 항상 범위를 사용하세요.
+12. 이모티콘을 사용하거나 이모티콘을 사용하지 않더라도 항상 유형과 범위를 사용하세요! 유형 이름은 이모티콘과 함께 포함되어야 합니다.
 
 **예:**
 fix(server.ts): 포트 변수를 소문자 port에서 대문자 PORT로 변경。
@@ -113,10 +113,28 @@ Sie sollen eine Commit-Nachricht in Git erstellen. Ihre Aufgabe ist es, saubere 
 9. Machen Sie die Commit-Nachricht kurz, aber klar.
 10. Der Geltungsbereich darf keinen Schrägstrich enthalten.
 11. Bei mehreren Änderungen sollten Sie möglichst den Ordnernamen als Geltungsbereich verwenden.
-12. Verwenden Sie immer den Geltungsbereich.
+12. Verwenden Sie immer Typ und Umfang, auch mit Emoji oder ohne Emoji und egal was! Typname muss mit Emoji enthalten sein.
 
 **Beispiel:**
 fix(server.ts): Port-Variable von Kleinbuchstaben port in Großbuchstaben PORT ändern.
+`;
+
+export const emojiInstructions = `
+Include emojis in the commit message based on the type:
+- feat: ✨
+- fix: 🐛
+- docs: 📚
+- style: 💎
+- refactor: 🔨
+- perf: 🚀
+- test: 🚨
+- chore: 🔧
+- build: 🏗️
+- ci: 👷
+- revert: ⏪
+
+**Information:**
+Always include type name and scope when using emojis. Type name must be included with emoji like this: ✨feat(server.ts): add new feature
 `;
 
 export const englishAssistantInstruction = "fix(server.ts): change port variable case from lowercase port to uppercase PORT";
