@@ -15,6 +15,8 @@ I'll send you the output of the 'git diff --staged' command, and you should conv
 7. Do not include the diff output in the commit message.
 8. Do not include the number of files changed in the commit message.
 9. Make commit message kinda short but clearly.
+10. Do not included any slash in the scope.
+11. If multiple changes if possible use folder name as scope.
 
 **Example:** 
 fix(server.ts): change port variable case from lowercase port to uppercase PORT.
@@ -36,6 +38,8 @@ export const russianInstructions = `
 7. Не включайте вывод diff в сообщение о фиксации.
 8. Не включайте количество измененных файлов в сообщение о фиксации.
 9. Сделайте сообщение о фиксации коротким, но понятным.
+10. Не включайте косую черту в область видимости
+11. Если возможно несколько изменений, используйте имя папки в качестве области видимости
 
 **Пример:**
 fix(server.ts): изменить регистр переменной порта с прописных на заглавные PORT.
@@ -57,6 +61,8 @@ Git のコミットメッセージを作成する役割を果たしてくださ�
 7. コミットメッセージにdiff出力を含めないでください。
 8. コミットメッセージに変更されたファイルの数を含めないでください。
 9. コミットメッセージを短く、しかし明確にしてください。
+10. スコープにスラッシュを入れないでください。
+11. 複数の変更がある場合、可能であればフォルダ名をスコープとして使用する
 
 **例:**
 fix(server.ts): ポート変数のケースを小文字のポートから大文字のPORTに変更。
@@ -78,6 +84,8 @@ Git의 커밋 메시지를 작성하는 역할을 맡아주세요. 임무는 컨
 7. 커밋 메시지에 diff 출력을 포함하지 마십시오.
 8. 커밋 메시지에 변경된 파일 수를 포함하지 마십시오.
 9. 커밋 메시지를 짧지만 명확하게 작성하십시오.
+10. 범위에 슬래시를 포함하지 마세요.
+11. 가능하면 폴더 이름을 범위로 사용하세요.
 
 **예:**
 fix(server.ts): 포트 변수를 소문자 port에서 대문자 PORT로 변경。
@@ -99,6 +107,8 @@ Sie sollen eine Commit-Nachricht in Git erstellen. Ihre Aufgabe ist es, saubere 
 7. Fügen Sie die Diff-Ausgabe nicht in die Commit-Nachricht ein.
 8. Fügen Sie die Anzahl der geänderten Dateien nicht in die Commit-Nachricht ein.
 9. Machen Sie die Commit-Nachricht kurz, aber klar.
+10. Der Geltungsbereich darf keinen Schrägstrich enthalten.
+11. Bei mehreren Änderungen sollten Sie möglichst den Ordnernamen als Geltungsbereich verwenden.
 
 **Beispiel:**
 fix(server.ts): Port-Variable von Kleinbuchstaben port in Großbuchstaben PORT ändern.
