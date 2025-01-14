@@ -131,6 +131,10 @@
             "ChatGPT",
             "Custom"
           ],
+          "markdownEnumDescriptions": [
+            "Use ChatGPT to generate commit messages",
+            "Use a custom generator to create commit messages"
+          ],
           "default": "ChatGPT",
           "description": "Generator used to create commit messages"
         },
@@ -154,6 +158,11 @@
           ],
           "default": "Quick pick",
           "description": "Method used to approve generated commit messages"
+        },
+        "procommit.general.useMultipleResults": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow using multiple results for commit messages"
         },
         "procommit.openAI.apiKey": {
           "type": "string",
