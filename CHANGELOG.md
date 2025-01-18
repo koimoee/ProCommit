@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.0.6 - 2025-01-18
+
+### Added
+
+- feat(langInstruction): Introduce Russian language instructions for user guidance and improve code readability by using consistent naming conventions for variables related to the instruction set.
+- feat(configuration): introduce new configuration option to show emojis in the UI
+- feat(customInstruction): introduce emoji instructions based on user preference.
+- feat: add new emoji instruction
+- feat(package): add configuration option to show emojis in commit messages.
+- feat(README): update features section with new emoji support and customization options.
+- feat(chatgpt-msg-generator): enhance commit message generation with async instructions and configurable results
+
+### Changes
+
+- refactor(customInstruction): simplify instruction retrieval by removing unused language instructions and emoji condition
+- refactor(langInstruction): update commit message guidelines for clarity and consistency
+
+### Fixed
+
+- fix(package.json): remove deprecated scm/inputBox configuration option.
+- fixed knows issue
+
 ## 2.0.5 - 2025-01-11
 
 ### Fixed
