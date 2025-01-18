@@ -14,10 +14,11 @@ ProCommit
 
 ## Features
 
-- Emoji Features.
+- Emoji features.
 - Custom Generator, Endpoint, and Api Key.
 - Generating commit message using different language.
-- More customizable
+- Using multiple result for commit messages.
+- More customizable.
 
 ![demo](./example/demo.gif)
 
@@ -31,7 +32,7 @@ To use this extension, you need an API Key:
 - Download ProCommit Extension From [Marketplace](https://marketplace.visualstudio.com/items?itemName=Kochan.pro-commit)
 
 ## Install (Manually)
-- Download ProCommit Extension From [Direct Link](https://nightly.link/koimoee/ProCommit/workflows/build/main/ProCommit.vsix.zip) or [VSIX Registry](https://marketplace.visualstudio.com/items?itemName=Kochan.pro-commit)
+- Download ProCommit Extension From [Direct Link](https://nightly.link/koimoee/ProCommit/workflows/build/main/ProCommit.vsix.zip) or [VSIX Registry](https://open-vsx.org/extension/Kochan/pro-commit)
 - In Visual Studio Code, at the bottom of the Activity Bar, click the Extensions icon, and select Install from VSIX. Select the VSIX file ProCommit.vsix and click Install.
 - You're done!
 
@@ -44,6 +45,8 @@ ProCommit extension contributes the following settings:
 - `procommit.general.generator`: Generator used to create commit messages. Available options: ChatGPT, Custom.
 - `procommit.general.messageApproveMethod`: Method used to approve generated commit messages. Available options: Quick pick, Message file.
 - `procommit.general.language`: Control what language should used for commit message.
+- `procommit.general.showEmoji`: Include emojis in commit messages
+- `procommit.general.useMultipleResults`: Allow using multiple results for commit messages
 
 ### OpenAI
 
