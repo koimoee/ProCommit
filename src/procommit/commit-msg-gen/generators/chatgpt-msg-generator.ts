@@ -6,28 +6,26 @@ import {
 } from "openai";
 
 import { trimNewLines } from "@utils/text";
-import { Configuration as AppConfiguration } from "@utils/configuration";
-import { getSystemInstruction } from "@utils/customInstruction";
-
+import { Configuration as AppConfiguration, getConfiguration } from "@utils/configuration";
+import { getAssistantInstruction, getSystemInstruction } from "@utils/customInstruction";
 import { MsgGenerator } from "./msg-generator";
 
-function generateCommitMessageChatCompletionPrompt(
+async function generateCommitMessageChatCompletionPrompt(
   diff: string
-): Array<ChatCompletionRequestMessage> {
+): Promise<Array<ChatCompletionRequestMessage>> {
   const initMessagesPrompt: Array<ChatCompletionRequestMessage> = [
-    getSystemInstruction(),
+    await getSystemInstruction(),
     {
       role: ChatCompletionRequestMessageRoleEnum.User,
       content: diff,
-    },/*
-    getAssistantInstruction(),
-    */
+    },
+    await getAssistantInstruction(),
   ];
 
   return initMessagesPrompt;
 }
 
-const defaultModel = "gpt-3.5-turbo-16k";
+const defaultModel = "gpt-4o-mini";
 const defaultTemperature = 0.2;
 const defaultMaxTokens = 196;
 
@@ -46,11 +44,18 @@ export class ChatgptMsgGenerator implements MsgGenerator {
   }
 
   async generate(diff: string): Promise<string> {
-    const messages = generateCommitMessageChatCompletionPrompt(diff);
+    const configuration = getConfiguration();
+    let n;
+    if (configuration.general.useMultipleResults){
+      n = 4;
+    } else {
+      n = 1;
+    }
+    const messages = await generateCommitMessageChatCompletionPrompt(diff);
     const { data } = await this.openAI.createChatCompletion({
       model: this.config?.modelVersion || defaultModel,
       messages: messages,
-      n: 4,
+      n,
       temperature: this.config?.temperature || defaultTemperature,
       max_tokens: this.config?.maxTokens || defaultMaxTokens,
     });
