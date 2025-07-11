@@ -66,8 +66,16 @@ export class ChatgptMsgGenerator implements MsgGenerator {
 
     // Collect all generated messages
     const commitMessages = data.choices.map((choice) => {
-      const message = choice.message?.content;
-      return trimNewLines(message || "");
+      let message = choice.message?.content || "";
+      // Remove leading '*' and any whitespace after it
+      message = trimNewLines(message).replace(/^\*\s*/, "");
+      // Extract scope and keep only the filename with extension (no slashes or folders)
+      message = message.replace(/\(([^)]+)\)/, (match, scope) => {
+        // Remove any leading/trailing slashes and whitespace
+        let cleanScope = scope.trim().split("/").pop() || scope.trim();
+        return `(${cleanScope})`;
+      });
+      return message;
     });
 
     return commitMessages[0];

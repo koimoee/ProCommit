@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.7 - 2025-07-11
+
+### Changes
+- Improve Language accuraty for filename and insctruction
+
 ## 2.0.6 - 2025-01-18
 
 ### Added
