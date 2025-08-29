@@ -8,8 +8,13 @@ import { CommitMessageWriter } from "./commit-message-writer";
 export class GitCommitMessageWriter implements CommitMessageWriter {
   repository: Repository;
 
-  constructor(gitExtension: vscode.Extension<GitExtension>) {
-    this.repository = getRepositoryFromGitExtension(gitExtension);
+  constructor(repository: Repository) {
+    this.repository = repository;
+  }
+
+  static async fromGitExtension(gitExtension: vscode.Extension<GitExtension>) {
+    const repository = await getRepositoryFromGitExtension(gitExtension);
+    return new GitCommitMessageWriter(repository);
   }
 
   async write(message: string) {

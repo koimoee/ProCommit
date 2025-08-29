@@ -103,7 +103,7 @@ export async function generateAiCommitCommand() {
 
     const configuration = getConfiguration();
 
-    const commitMessageWriter = new GitCommitMessageWriter(gitExtension);
+  const commitMessageWriter = await GitCommitMessageWriter.fromGitExtension(gitExtension);
     let messageGenerator;
     const apiKey = configuration.apiKey || "";
     const endpoint = configuration.endpoint || "";
@@ -139,7 +139,7 @@ export async function generateAiCommitCommand() {
         break;
       }
     }
-    const diffProvider = new VscodeGitDiffProvider(gitExtension);
+  const diffProvider = await VscodeGitDiffProvider.fromGitExtension(gitExtension);
 
     const generateCompletionFlow = new GenerateCompletionFlow(
       messageGenerator,

@@ -8,8 +8,13 @@ import { GitExtension, Repository } from "../types";
 export class VscodeGitDiffProvider implements DiffProvider {
   repository: Repository;
 
-  constructor(gitExtension: vscode.Extension<GitExtension>) {
-    this.repository = getRepositoryFromGitExtension(gitExtension);
+  constructor(repository: Repository) {
+    this.repository = repository;
+  }
+
+  static async fromGitExtension(gitExtension: vscode.Extension<GitExtension>) {
+    const repository = await getRepositoryFromGitExtension(gitExtension);
+    return new VscodeGitDiffProvider(repository);
   }
 
   async getStagedDiff(excludeFiles?: string[]) {
