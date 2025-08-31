@@ -59,7 +59,7 @@ These keys map directly to the configuration schema in `package.json` and can be
 
 ## License
 
-Released under the [MIT License](/LICENSE) by [@Kochan](https://github.com/koimoee).
+Released under the [MIT License](/LICENSE) by [@Kochan/koiisan](https://github.com/koimoee).
 
 ## Contributing
 
