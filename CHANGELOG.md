@@ -7,7 +7,7 @@
 - feat: Add support for specifying model versions via new `procommit.model` setting (e.g., gpt-4o, gemini-1.5-pro, llama3, etc.)
 - feat: Add `procommit.supportedGenerators` setting to explicitly list all supported commit message generators
 - feat: Add support for new generators: Gemini (Google), Ollama (local LLM), LMStudio (local LLM), Smithery, and Custom endpoints
-- feat: Add support for workspace/multiple repositories
+- feat: Add support for workspace(s)/multiple repositories
 
 ### Changed
 - refactor: Improve configuration schema for clarity and extensibility (all generator settings unified, model/endpoint/apiKey now top-level)
