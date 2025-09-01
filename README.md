@@ -40,25 +40,26 @@ To use this extension, you need an API Key:
 
 ProCommit extension contributes the following settings:
 
-### General
+### Extension Settings
 
-- `procommit.general.generator`: Generator used to create commit messages. Available options: ChatGPT, Custom.
-- `procommit.general.messageApproveMethod`: Method used to approve generated commit messages. Available options: Quick pick, Message file.
-- `procommit.general.language`: Control what language should used for commit message.
-- `procommit.general.showEmoji`: Include emojis in commit messages
-- `procommit.general.useMultipleResults`: Allow using multiple results for commit messages
+The extension contributes the following settings (keys and defaults shown):
 
-### OpenAI
+- `procommit.general.generator` (default: `ChatGPT`): Generator used to create commit messages. Options: `ChatGPT`, `Gemini`, `Ollama`, `LMStudio`, `Smithery`, `Custom`.
+- `procommit.general.messageApproveMethod` (default: `Quick pick`): Method used to approve generated commit messages. Options: `Quick pick`, `Message file`.
+- `procommit.general.language` (default: `English`): Language used for generated commit messages. Options include `English`, `Japanese`, `Korean`, `German`, `Russian`.
+- `procommit.general.showEmoji` (default: `false`): Include emojis in commit messages.
+- `procommit.general.useMultipleResults` (default: `false`): When enabled and using the Quick pick approve method, allow choosing from multiple generated results.
+- `procommit.apiKey` (default: empty): API key used by generators (OpenAI, Gemini, Smithery, AutoCommit, etc.).
+- `procommit.endpoint` (default: empty): Custom endpoint URL for generators. Leave blank to use the default endpoint for the selected generator.
+- `procommit.model` (default: `gpt-4o-mini`): Model identifier or version to use for AI generators. Leave blank to use the generator default.
+- `procommit.temperature` (default: `0.2`): Controls randomness for generators. Lower values make output more deterministic.
+- `procommit.maxTokens` (default: `196`): Maximum number of tokens to generate for commit messages.
 
-- `procommit.openAI.apiKey`: API Key needed for generating AI commit messages.
-- `procommit.openAI.modelVersion`: Version of AI Model used.
-- `procommit.openAI.customEndpoint`: Custom endpoint URL.
-- `procommit.openAI.temperature`: Controls randomness. Lower values result in less random completions. As the temperature approaches zero, the model becomes deterministic and repetitive.
-- `procommit.openAI.maxTokens`: The maximum number of tokens to generate. Requests can use up to 2048 tokens shared between prompt and completion.
+These keys map directly to the configuration schema in `package.json` and can be changed in VS Code Settings UI or in workspace/user settings.
 
 ## License
 
-Released under the [MIT License](/LICENSE) by [@Kochan](https://github.com/koimoee).
+Released under the [MIT License](/LICENSE) by [@Kochan/koiisan](https://github.com/koimoee).
 
 ## Contributing
 

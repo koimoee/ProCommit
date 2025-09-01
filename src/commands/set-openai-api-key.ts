@@ -14,8 +14,8 @@ export async function setOpenaiApiKey() {
     return;
   }
 
-  logToOutputChannel("Saving OpenAi API Key");
-  await setConfigurationValue("openAI.apiKey", apiKey);
+  logToOutputChannel("Saving API Key");
+  await setConfigurationValue("apiKey", apiKey);
 
   return apiKey;
 }
