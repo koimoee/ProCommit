@@ -7,7 +7,8 @@ import { getConfiguration } from "@utils/configuration";
 import { GitExtension } from "@procommit/scm/types";
 import { GitCommitMessageWriter, VscodeGitDiffProvider } from "@procommit/scm";
 import { GenerateCompletionFlow } from "@flows";
-import { ChatgptMsgGenerator } from "@procommit/commit-msg-gen";
+// Removed duplicate import
+import { ChatgptMsgGenerator, GeminiMsgGenerator } from "@procommit/commit-msg-gen";
 import { runTaskWithTimeout } from "@utils/timer";
 import { logToOutputChannel } from "@utils/output";
 import { isValidApiKey } from "@utils/text";
@@ -101,9 +102,44 @@ export async function generateAiCommitCommand() {
     }
 
     const configuration = getConfiguration();
-    const commitMessageWriter = new GitCommitMessageWriter(gitExtension);
-    const messageGenerator = new ChatgptMsgGenerator(configuration.openAI);
-    const diffProvider = new VscodeGitDiffProvider(gitExtension);
+
+  const commitMessageWriter = await GitCommitMessageWriter.fromGitExtension(gitExtension);
+    let messageGenerator;
+    const apiKey = configuration.apiKey || "";
+    const endpoint = configuration.endpoint || "";
+    switch (configuration.general.generator) {
+      case "Gemini": {
+        const { GeminiMsgGenerator } = await import("@procommit/commit-msg-gen");
+        messageGenerator = new GeminiMsgGenerator({ apiKey, endpoint });
+        break;
+      }
+      case "Ollama": {
+        const { OllamaMsgGenerator } = await import("@procommit/commit-msg-gen");
+        messageGenerator = new OllamaMsgGenerator({ apiKey, endpoint });
+        break;
+      }
+      case "LMStudio": {
+        const { LMStudioMsgGenerator } = await import("@procommit/commit-msg-gen");
+        messageGenerator = new LMStudioMsgGenerator({ apiKey, endpoint });
+        break;
+      }
+      case "Smithery": {
+        const { SmitheryMsgGenerator } = await import("@procommit/commit-msg-gen");
+        messageGenerator = new SmitheryMsgGenerator({ apiKey, endpoint });
+        break;
+      }
+      case "Custom": {
+        const { CustomMsgGenerator } = await import("@procommit/commit-msg-gen");
+        messageGenerator = new CustomMsgGenerator({ endpoint });
+        break;
+      }
+      case "ChatGPT":
+      default: {
+        messageGenerator = new ChatgptMsgGenerator();
+        break;
+      }
+    }
+  const diffProvider = await VscodeGitDiffProvider.fromGitExtension(gitExtension);
 
     const generateCompletionFlow = new GenerateCompletionFlow(
       messageGenerator,

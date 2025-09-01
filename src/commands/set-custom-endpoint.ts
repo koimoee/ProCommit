@@ -15,8 +15,8 @@ export async function setCustomEndpoint() {
     return;
   }
 
-  logToOutputChannel("Saving custom endpoint configuration");
-  await setConfigurationValue("openAI.customEndpoint", endpoint);
+  logToOutputChannel("Saving endpoint configuration");
+  await setConfigurationValue("endpoint", endpoint);
 
   return endpoint;
 }

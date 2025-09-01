@@ -1,4 +1,24 @@
-# Changelog
+# CHANGELOG
+
+## 2.0.8 - 2025-07-19
+
+
+### Added
+- feat: Add support for specifying model versions via new `procommit.model` setting (e.g., gpt-4o, gemini-1.5-pro, llama3, etc.)
+- feat: Add `procommit.supportedGenerators` setting to explicitly list all supported commit message generators
+- feat: Add support for new generators: Gemini (Google), Ollama (local LLM), LMStudio (local LLM), Smithery, and Custom endpoints
+
+### Changed
+- refactor: Improve configuration schema for clarity and extensibility (all generator settings unified, model/endpoint/apiKey now top-level)
+- refactor: Update generator code to use new config structure and robust, stateless, language-aware logic
+
+### Fixed
+- fix: Ensure all generators use correct instructions and config, and output is always conventional and clean
+
+## 2.0.7 - 2025-07-11
+
+### Changes
+- Improve Language accuraty for filename and insctruction
 
 ## 2.0.6 - 2025-01-18
 

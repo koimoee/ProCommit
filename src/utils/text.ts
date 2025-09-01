@@ -14,7 +14,7 @@ export function trimNewLines(str: string) {
 export function isValidApiKey() {
   const configuration = getConfiguration();
   return (
-    configuration.openAI.apiKey != null &&
-    configuration.openAI.apiKey.trim().length > 0
+    configuration.apiKey != null &&
+    configuration.apiKey.trim().length > 0
   );
 }
