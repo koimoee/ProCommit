@@ -4,10 +4,10 @@
   "description": "📝 A Customizable VS Code extension for AI-generated commit messages.",
   "version": "2.0.8",
   "homepage": "https://prplmoe.me",
-  "bugs": "https://github.com/koimoee/ProCommit/issues",
+  "bugs": "https://github.com/koiverse/ProCommit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/koimoee/ProCommit"
+    "url": "https://github.com/koiverse/ProCommit"
   },
   "license": "MIT",
   "engines": {
