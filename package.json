@@ -2,12 +2,12 @@
   "name": "pro-commit",
   "displayName": "ProCommit",
   "description": "📝 A Customizable VS Code extension for AI-generated commit messages.",
-  "version": "2.0.6",
+  "version": "2.0.8",
   "homepage": "https://prplmoe.me",
-  "bugs": "https://github.com/koimoee/ProCommit/issues",
+  "bugs": "https://github.com/koiverse/ProCommit/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/koimoee/ProCommit"
+    "url": "https://github.com/koiverse/ProCommit"
   },
   "license": "MIT",
   "engines": {
@@ -122,14 +122,37 @@
           "type": "string",
           "enum": [
             "ChatGPT",
+            "Gemini",
+            "Ollama",
+            "LMStudio",
+            "Smithery",
             "Custom"
           ],
           "markdownEnumDescriptions": [
             "Use ChatGPT to generate commit messages",
+            "Use Gemini (Google) to generate commit messages",
+            "Use Ollama (local LLM) to generate commit messages",
+            "Use LMStudio (local LLM) to generate commit messages",
+            "Use Smithery AI to generate commit messages",
             "Use a custom generator to create commit messages"
           ],
           "default": "ChatGPT",
           "description": "Generator used to create commit messages"
+        },
+        "procommit.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for all generators (OpenAI, Gemini, Smithery, AutoCommit, etc.)"
+        },
+        "procommit.endpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Endpoint URL for all generators (OpenAI, Gemini, Smithery, AutoCommit, etc.). Leave blank to use the default for the selected generator."
+        },
+        "procommit.model": {
+          "type": "string",
+          "default": "",
+          "description": "(Optional) Model version to use for AI generators (e.g., gpt-4o, gemini-1.5-pro, llama3, etc.). Leave blank to use the default for the selected generator."
         },
         "procommit.general.language": {
           "type": "string",
@@ -162,30 +185,15 @@
           "default": false,
           "description": "Allow using multiple results for commit messages"
         },
-        "procommit.openAI.apiKey": {
-          "type": "string",
-          "default": "",
-          "description": "Needed for generating AI commit messages"
-        },
-        "procommit.openAI.modelVersion": {
-          "type": "string",
-          "default": "gpt-4o-mini",
-          "description": "Model Version used for generating AI commit messages"
-        },
-        "procommit.openAI.customEndpoint": {
-          "type": "string",
-          "default": "https://api.openai.com/v1",
-          "description": "Custom endpoint URL"
-        },
-        "procommit.openAI.temperature": {
+        "procommit.temperature": {
           "type": "number",
           "default": 0.2,
-          "description": "Controls randomness. Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive"
+          "description": "Controls randomness for all generators. Lower values make output more deterministic."
         },
-        "procommit.openAI.maxTokens": {
+        "procommit.maxTokens": {
           "type": "number",
           "default": 196,
-          "description": "The maximum number of tokens to generate. Requests can use up to 2048 tokens shared between prompt and completion"
+          "description": "The maximum number of tokens to generate for all generators."
         }
       }
     }
@@ -214,7 +222,9 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@google/genai": "^1.10.0",
     "execa": "^9.5.2",
+    "node-fetch": "^3.3.2",
     "openai": "^3.3.0",
     "zod": "^3.24.1"
   }
